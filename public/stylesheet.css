@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+.header {
+  height: 60px;
+}
+
+.container {
+  width: 850px;
+  margin: auto;
+}
+
+.headerlogo img {
+  height: 40px;
+  margin: 10px 0px;
+  display: inline-block;
+  float: left;
+}
+
+.menu {
+  display: flex;
+  float: right;
+  list-style: none;
+}
+
+.menu a {
+  color: #24292e;
+  margin-left: 30px;
+  font-size: 14px;
+}
+
+.menu a:hover {
+  opacity: 0.6;
+}
+
+.button {
+  text-align: center;
+}
+
+.mainimg {
+  height: 600px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.count {
+  text-align: center;
+}
+
+.footer-list {
+  list-style: none;
+}
