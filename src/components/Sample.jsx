@@ -4,7 +4,7 @@ function Sample() {
   const [formData, setFormData] = useState({ message: "Test!!!" });
 
   const handleSubmit = async (e) => {
-    // e.preventDefault(); // ここでデフォルトのイベントをキャンセル
+    e.preventDefault(); // ここでデフォルトのイベントをキャンセル
 
     try {
       const response = await fetch("/messege ", {
@@ -17,7 +17,7 @@ function Sample() {
 
       if (response.ok) {
         console.log("データを送信しました");
-        console.log(req.body);
+        console.log(formData);
         // 成功時の処理
       } else {
         console.error("データの送信に失敗しました");
