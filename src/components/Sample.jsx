@@ -15,7 +15,7 @@ function Sample() {
     e.preventDefault(); // ここでデフォルトのイベントをキャンセル
 
     try {
-      const response = await fetch("/message ", {
+      const response = await fetch("/api/v1/message", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
