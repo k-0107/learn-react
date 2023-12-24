@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Sample() {
   const [formData, setFormData] = useState({
@@ -6,6 +6,24 @@ function Sample() {
   });
 
   const [submittedMessages, setSubmittedMessages] = useState([]);
+
+  useEffect(() => {
+    // サーバーからメッセージ一覧を取得する処理
+    fetch("/api/v1/message")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.result === 0) {
+          setSubmittedMessages(data.data);
+        } else {
+          console.error("メッセージ一覧の取得に失敗しました");
+          // エラー時の処理
+        }
+      })
+      .catch((error) => {
+        console.error("ネットワークエラー:", error);
+        // ネットワークエラー時の処理
+      });
+  }, [submittedMessages]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -59,8 +77,10 @@ function Sample() {
       <div>
         <h2>メッセージ一覧:</h2>
         <ul>
-          {submittedMessages.map((message, index) => (
-            <li key={index}>{message}</li>
+          {submittedMessages.map((item, index) => (
+            <li key={index}>
+              {item.message} - {item.date}
+            </li>
           ))}
         </ul>
       </div>
