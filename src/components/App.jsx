@@ -4,6 +4,7 @@ import Main from "./Main.jsx";
 import Footer from "./Footer.jsx";
 import Test from "./Test.jsx";
 import Sample from "./Sample.jsx";
+import FileTest from "./FileTest.jsx";
 
 class App extends React.Component {
   render() {
@@ -14,6 +15,7 @@ class App extends React.Component {
         <Footer />
         <Test />
         <Sample />
+        <FileTest />
       </div>
     );
   }
