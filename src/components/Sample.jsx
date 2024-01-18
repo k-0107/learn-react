@@ -23,7 +23,7 @@ function Sample() {
         console.error("ネットワークエラー:", error);
         // ネットワークエラー時の処理
       });
-  }, [submittedMessages]);
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

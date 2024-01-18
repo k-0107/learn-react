@@ -7,11 +7,21 @@ function FileTest() {
     setSelectedFile(e.target.files[0]);
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     if (selectedFile) {
-      // ファイルをアップロードするための処理をここに追加
-      console.log("Uploading file:", selectedFile);
-      // ここでファイルをサーバーに送信するための処理を実行
+      const formData = new FormData();
+      formData.append("image", selectedFile);
+
+      try {
+        const response = await fetch("/photo", {
+          method: "POST",
+          body: formData,
+        });
+
+        console.log("File uploaded successfully");
+      } catch (error) {
+        console.error("Error uploading file:", error);
+      }
     } else {
       console.log("ファイルが選択されていません。");
     }
@@ -19,7 +29,7 @@ function FileTest() {
 
   return (
     <div>
-      <input type="file" onChange={handleFileChange} />
+      <input type="file" name="image" onChange={handleFileChange} />
       <button onClick={handleUpload}>アップロード</button>
     </div>
   );
